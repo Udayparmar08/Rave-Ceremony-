@@ -33,6 +33,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'DM Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -192,6 +193,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .segment-card:hover {
+            transform: translateY(-5px);
         }
 
         .segment-card h3 {
@@ -230,6 +236,13 @@
             text-align: center;
             font-weight: 700;
             font-size: 1.05rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .price-tag:hover {
+            background-color: var(--brand-green);
+            color: var(--white);
         }
 
         /* Menu Collection */
@@ -264,6 +277,15 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
+        .menu-table tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .menu-table tbody tr:hover {
+            background-color: #f9fbf9;
+        }
+
         .menu-table th {
             background-color: #fafafa;
             font-size: 0.85rem;
@@ -276,6 +298,17 @@
             font-weight: 700;
             color: var(--brand-green);
             white-space: nowrap;
+        }
+
+        .order-item-btn {
+            background: var(--whatsapp-green);
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         .alacarte-grid {
@@ -293,6 +326,12 @@
             align-items: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             border: 1px solid rgba(0,0,0,0.03);
+            cursor: pointer;
+            transition: border 0.2s;
+        }
+
+        .alacarte-item:hover {
+            border-color: var(--whatsapp-green);
         }
 
         .alacarte-item span.name {
@@ -340,6 +379,14 @@
             border-radius: 20px;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .plan-tag:hover {
+            background: var(--gold);
+            color: var(--brand-green);
+            font-weight: bold;
         }
 
         /* How to order */
@@ -402,6 +449,64 @@
             font-size: 0.95rem;
         }
 
+        /* Modal Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal h3 {
+            color: var(--brand-green);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--brand-green);
@@ -462,7 +567,7 @@
                 <div class="brand-subtitle">PVT. LTD.</div>
             </div>
         </a>
-        <a href="https://wa.me/917837501209?text=Hello!%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order on WhatsApp</a>
+        <button onclick="openModal('General Inquiry', 'Order on WhatsApp')" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order on WhatsApp</button>
     </header>
 
     <!-- Hero Section -->
@@ -500,7 +605,7 @@
                             <li>Bulk Orders & Subscriptions</li>
                         </ul>
                     </div>
-                    <div class="price-tag">Starts From ₹110 / Meal</div>
+                    <div class="price-tag" onclick="openModal('Corporate Offices Meal Plan', 'Starts From ₹110 / Meal')">Starts From ₹110 / Meal</div>
                 </div>
 
                 <div class="segment-card">
@@ -513,7 +618,7 @@
                             <li>Pure & Hygienic Packaging</li>
                         </ul>
                     </div>
-                    <div class="price-tag">Starts From ₹120 / Meal</div>
+                    <div class="price-tag" onclick="openModal('Hospitals Meal Plan', 'Starts From ₹120 / Meal')">Starts From ₹120 / Meal</div>
                 </div>
 
                 <div class="segment-card">
@@ -526,7 +631,7 @@
                             <li>Custom Timings Available</li>
                         </ul>
                     </div>
-                    <div class="price-tag">Starts From ₹130 / Meal</div>
+                    <div class="price-tag" onclick="openModal('Industries & Factories Meal Plan', 'Starts From ₹130 / Meal')">Starts From ₹130 / Meal</div>
                 </div>
 
                 <div class="segment-card">
@@ -539,7 +644,7 @@
                             <li>Track Your Order Live</li>
                         </ul>
                     </div>
-                    <div class="price-tag">Starts From ₹120 / Meal</div>
+                    <div class="price-tag" onclick="openModal('Online Delivery Meal Plan', 'Starts From ₹120 / Meal')">Starts From ₹120 / Meal</div>
                 </div>
             </div>
         </section>
@@ -548,7 +653,7 @@
         <section id="menu-collection">
             <div class="section-header">
                 <h2>Our Menu Collection</h2>
-                <p>Wholesome North Indian, South Indian, and Veg Special Delicacies</p>
+                <p>Wholesome North Indian, South Indian, and Veg Special Delicacies (Click any item to order)</p>
             </div>
 
             <!-- North Indian Menu -->
@@ -560,34 +665,38 @@
                             <th>Meal Plan</th>
                             <th>Menu Highlights</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="openModal('North Indian Basic Thali', '₹110')">
                             <td><strong>Basic Thali</strong></td>
                             <td>Dal, Mix Veg, 2 Roti, Rice, Salad, Pickle</td>
                             <td class="price">₹110</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('North Indian Standard Thali', '₹140')">
                             <td><strong>Standard Thali</strong></td>
                             <td>Dal, Paneer Sabzi, Veg, 2 Roti, Rice, Salad, Sweet</td>
                             <td class="price">₹140</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('North Indian Premium Thali', '₹180')">
                             <td><strong>Premium Thali</strong></td>
                             <td>Dal Makhani, Paneer Sabzi, Veg, 2 Roti, Rice, Salad, Sweet</td>
                             <td class="price">₹180</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h4 style="margin: 1rem 0; color: var(--text-muted);">A La Carte Options</h4>
                 <div class="alacarte-grid">
-                    <div class="alacarte-item"><span class="name">Rajma Chawal</span><span class="price">₹90</span></div>
-                    <div class="alacarte-item"><span class="name">Chole Bhature (2 Pcs)</span><span class="price">₹100</span></div>
-                    <div class="alacarte-item"><span class="name">Paneer Butter Masala + 2 Roti</span><span class="price">₹120</span></div>
-                    <div class="alacarte-item"><span class="name">Jeera Rice</span><span class="price">₹60</span></div>
-                    <div class="alacarte-item"><span class="name">Veg Pulao</span><span class="price">₹80</span></div>
+                    <div class="alacarte-item" onclick="openModal('Rajma Chawal', '₹90')"><span class="name">Rajma Chawal</span><span class="price">₹90</span></div>
+                    <div class="alacarte-item" onclick="openModal('Chole Bhature (2 Pcs)', '₹100')"><span class="name">Chole Bhature (2 Pcs)</span><span class="price">₹100</span></div>
+                    <div class="alacarte-item" onclick="openModal('Paneer Butter Masala + 2 Roti', '₹120')"><span class="name">Paneer Butter Masala + 2 Roti</span><span class="price">₹120</span></div>
+                    <div class="alacarte-item" onclick="openModal('Jeera Rice', '₹60')"><span class="name">Jeera Rice</span><span class="price">₹60</span></div>
+                    <div class="alacarte-item" onclick="openModal('Veg Pulao', '₹80')"><span class="name">Veg Pulao</span><span class="price">₹80</span></div>
                 </div>
             </div>
 
@@ -600,34 +709,38 @@
                             <th>Meal Plan</th>
                             <th>Menu Highlights</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="openModal('South Indian Basic Thali', '₹100')">
                             <td><strong>Basic Thali</strong></td>
                             <td>Idli (2 Pcs), Sambar, Chutney</td>
                             <td class="price">₹100</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('South Indian Standard Thali', '₹130')">
                             <td><strong>Standard Thali</strong></td>
                             <td>Dosa (1 Pc), Sambar, Chutney, Upma</td>
                             <td class="price">₹130</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('South Indian Premium Thali', '₹160')">
                             <td><strong>Premium Thali</strong></td>
                             <td>Dosa (1 Pc), Medu Vada, Sambar, Chutney, Sweet</td>
                             <td class="price">₹160</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h4 style="margin: 1rem 0; color: var(--text-muted);">A La Carte Options</h4>
                 <div class="alacarte-grid">
-                    <div class="alacarte-item"><span class="name">Masala Dosa</span><span class="price">₹100</span></div>
-                    <div class="alacarte-item"><span class="name">Plain Dosa</span><span class="price">₹80</span></div>
-                    <div class="alacarte-item"><span class="name">Pongal</span><span class="price">₹90</span></div>
-                    <div class="alacarte-item"><span class="name">Upma</span><span class="price">₹80</span></div>
-                    <div class="alacarte-item"><span class="name">Medu Vada (2 Pcs)</span><span class="price">₹80</span></div>
+                    <div class="alacarte-item" onclick="openModal('Masala Dosa', '₹100')"><span class="name">Masala Dosa</span><span class="price">₹100</span></div>
+                    <div class="alacarte-item" onclick="openModal('Plain Dosa', '₹80')"><span class="name">Plain Dosa</span><span class="price">₹80</span></div>
+                    <div class="alacarte-item" onclick="openModal('Pongal', '₹90')"><span class="name">Pongal</span><span class="price">₹90</span></div>
+                    <div class="alacarte-item" onclick="openModal('Upma', '₹80')"><span class="name">Upma</span><span class="price">₹80</span></div>
+                    <div class="alacarte-item" onclick="openModal('Medu Vada (2 Pcs)', '₹80')"><span class="name">Medu Vada (2 Pcs)</span><span class="price">₹80</span></div>
                 </div>
             </div>
 
@@ -640,34 +753,38 @@
                             <th>Meal Plan</th>
                             <th>Menu Highlights</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="openModal('Veg Special Basic Thali', '₹100')">
                             <td><strong>Basic Thali</strong></td>
                             <td>Dal, Mix Veg, 2 Roti, Rice, Salad</td>
                             <td class="price">₹100</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('Veg Special Standard Thali', '₹130')">
                             <td><strong>Standard Thali</strong></td>
                             <td>Dal, Paneer Sabzi, Veg, 2 Roti, Rice, Salad, Pickle</td>
                             <td class="price">₹130</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
-                        <tr>
+                        <tr onclick="openModal('Veg Special Premium Thali', '₹170')">
                             <td><strong>Premium Thali</strong></td>
                             <td>Dal Makhani, Paneer, Veg, 2 Roti, Rice, Salad, Sweet</td>
                             <td class="price">₹170</td>
+                            <td><button class="order-item-btn">Order</button></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h4 style="margin: 1rem 0; color: var(--text-muted);">A La Carte Options</h4>
                 <div class="alacarte-grid">
-                    <div class="alacarte-item"><span class="name">Veg Biryani + Raita</span><span class="price">₹120</span></div>
-                    <div class="alacarte-item"><span class="name">Kadai Paneer + 2 Roti</span><span class="price">₹130</span></div>
-                    <div class="alacarte-item"><span class="name">Malai Kofta + 2 Roti</span><span class="price">₹130</span></div>
-                    <div class="alacarte-item"><span class="name">Mix Veg + 2 Roti</span><span class="price">₹100</span></div>
-                    <div class="alacarte-item"><span class="name">Jeera Rice</span><span class="price">₹60</span></div>
+                    <div class="alacarte-item" onclick="openModal('Veg Biryani + Raita', '₹120')"><span class="name">Veg Biryani + Raita</span><span class="price">₹120</span></div>
+                    <div class="alacarte-item" onclick="openModal('Kadai Paneer + 2 Roti', '₹130')"><span class="name">Kadai Paneer + 2 Roti</span><span class="price">₹130</span></div>
+                    <div class="alacarte-item" onclick="openModal('Malai Kofta + 2 Roti', '₹130')"><span class="name">Malai Kofta + 2 Roti</span><span class="price">₹130</span></div>
+                    <div class="alacarte-item" onclick="openModal('Mix Veg + 2 Roti', '₹100')"><span class="name">Mix Veg + 2 Roti</span><span class="price">₹100</span></div>
+                    <div class="alacarte-item" onclick="openModal('Jeera Rice', '₹60')"><span class="name">Jeera Rice</span><span class="price">₹60</span></div>
                 </div>
             </div>
         </section>
@@ -677,10 +794,10 @@
             <h2>Subscription Plans Available</h2>
             <p>Flexible daily, weekly, and monthly meal plans customized for corporate offices, hospitals, and homes.</p>
             <div class="plan-tags">
-                <span class="plan-tag">Daily Plans</span>
-                <span class="plan-tag">Weekly Subscriptions</span>
-                <span class="plan-tag">Monthly Subscriptions</span>
-                <span class="plan-tag">Custom Plans</span>
+                <span class="plan-tag" onclick="openModal('Daily Subscription Plan', 'Custom Pricing')">Daily Plans</span>
+                <span class="plan-tag" onclick="openModal('Weekly Subscription Plan', 'Custom Pricing')">Weekly Subscriptions</span>
+                <span class="plan-tag" onclick="openModal('Monthly Subscription Plan', 'Custom Pricing')">Monthly Subscriptions</span>
+                <span class="plan-tag" onclick="openModal('Custom Subscription Plan', 'Custom Pricing')">Custom Plans</span>
             </div>
         </section>
 
@@ -698,7 +815,7 @@
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h4>Order via WhatsApp</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Click the WhatsApp button to send your selection and address.</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Click any meal plan or item to open WhatsApp directly.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
@@ -710,11 +827,24 @@
 
     </div>
 
-    <!-- Floating WhatsApp Button (Bottom Right) -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/917837501209?text=Hello!%20I%20would%20like%20to%20place%20an%20order%20/%20inquire%20about%20meal%20plans." target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
         <span>Order on WhatsApp</span>
     </a>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Item Name</h3>
+            <p id="modalPrice">Price: ₹0</p>
+            <p style="font-size:0.85rem;">Click below to order this item directly via WhatsApp.</p>
+            <a id="modalWaBtn" href="#" target="_blank" class="modal-btn">
+                <i class="fab fa-whatsapp"></i> Order This Item
+            </a>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -728,6 +858,29 @@
         <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Rave Ceremony Pvt. Ltd. All rights reserved.</p>
     </footer>
 
+    <!-- Interactive Script -->
+    <script>
+        function openModal(itemName, itemPrice) {
+            document.getElementById('modalTitle').innerText = itemName;
+            document.getElementById('modalPrice').innerText = "Pricing Details: " + itemPrice;
+            
+            var textMessage = encodeURIComponent("Hello! I would like to order: " + itemName + " (" + itemPrice + "). Please guide me on delivery details.");
+            document.getElementById('modalWaBtn').href = "https://wa.me/917837501209?text=" + textMessage;
+            
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
 
