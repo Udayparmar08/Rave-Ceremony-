@@ -137,34 +137,6 @@
             padding: 0 1.5rem 4rem;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--brand-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        /* Menu Image Cards Grid */
-        .menu-category {
-            margin-bottom: 4rem;
-        }
-
-        .category-header-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px 8px 0 0;
-        }
-
         .category-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
@@ -257,29 +229,6 @@
             opacity: 0.9;
         }
 
-        /* A La Carte Grid */
-        .alacarte-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-
-        .alacarte-card {
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(0,0,0,0.04);
-            cursor: pointer;
-            transition: border 0.2s;
-        }
-
-        .alacarte-card:hover {
-            border-color: var(--whatsapp-green);
-        }
-
         /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
@@ -321,6 +270,18 @@
             position: relative;
         }
 
+        .order-id-badge {
+            background-color: var(--bg-card);
+            color: var(--brand-green);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1px dashed var(--brand-green);
+        }
+
         .close-btn {
             position: absolute;
             top: 10px;
@@ -335,7 +296,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin: 1.5rem 0;
+            margin: 1.2rem 0;
         }
 
         .qty-btn {
@@ -377,26 +338,25 @@
                 <div class="brand-subtitle">PVT. LTD.</div>
             </div>
         </a>
-        <button onclick="openBooking('General Inquiry', 0)" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order on WhatsApp</button>
+        <button onclick="openBooking('General Meal Inquiry', 0)" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order on WhatsApp</button>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1>Fresh Cooked Food, at Your Door</h1>
-        <p>Premium food packaging & meal services. Pick your favorite thali or meal plan below to book directly via WhatsApp.</p>
+        <p>Premium food packaging & meal services. Pick your favorite thali below to place an order with an automated Order ID directly on WhatsApp.</p>
         <a href="#menu-collection" class="btn-primary">Explore Our Menus</a>
     </section>
 
     <div class="container" id="menu-collection">
 
         <!-- NORTH INDIAN MENU -->
-        <div class="menu-category">
+        <div class="menu-category" style="margin-top: 2rem;">
             <div class="category-title">North Indian Menu</div>
             <div class="card-grid">
-                
-                <!-- Basic Thali -->
+
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80" alt="North Indian Basic Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80" alt="Basic Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Basic Thali <span class="meal-price">₹110</span></div>
@@ -408,9 +368,8 @@
                     </div>
                 </div>
 
-                <!-- Standard Thali -->
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80" alt="North Indian Standard Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80" alt="Standard Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Standard Thali <span class="meal-price">₹140</span></div>
@@ -422,9 +381,8 @@
                     </div>
                 </div>
 
-                <!-- Premium Thali -->
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="North Indian Premium Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Premium Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Premium Thali <span class="meal-price">₹180</span></div>
@@ -437,14 +395,6 @@
                 </div>
 
             </div>
-
-            <h4 style="margin-bottom: 1rem; color: var(--text-muted);">North Indian A La Carte</h4>
-            <div class="alacarte-grid">
-                <div class="alacarte-card" onclick="openBooking('Rajma Chawal', 90)"><span>Rajma Chawal</span> <strong>₹90</strong></div>
-                <div class="alacarte-card" onclick="openBooking('Chole Bhature (2 Pcs)', 100)"><span>Chole Bhature (2 Pcs)</span> <strong>₹100</strong></div>
-                <div class="alacarte-card" onclick="openBooking('Paneer Butter Masala + 2 Roti', 120)"><span>Paneer Butter Masala + 2 Roti</span> <strong>₹120</strong></div>
-                <div class="alacarte-card" onclick="openBooking('Jeera Rice', 60)"><span>Jeera Rice</span> <strong>₹60</strong></div>
-            </div>
         </div>
 
         <!-- SOUTH INDIAN MENU -->
@@ -452,9 +402,8 @@
             <div class="category-title">South Indian Menu</div>
             <div class="card-grid">
 
-                <!-- Basic Thali -->
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="South Indian Basic Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="Basic Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Basic Thali <span class="meal-price">₹100</span></div>
@@ -466,9 +415,8 @@
                     </div>
                 </div>
 
-                <!-- Standard Thali -->
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=600&q=80" alt="South Indian Standard Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=600&q=80" alt="Standard Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Standard Thali <span class="meal-price">₹130</span></div>
@@ -480,9 +428,8 @@
                     </div>
                 </div>
 
-                <!-- Premium Thali -->
                 <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=600&q=80" alt="South Indian Premium Thali" class="meal-img">
+                    <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=600&q=80" alt="Premium Thali" class="meal-img">
                     <div class="meal-details">
                         <div>
                             <div class="meal-title">Premium Thali <span class="meal-price">₹160</span></div>
@@ -497,62 +444,13 @@
             </div>
         </div>
 
-        <!-- VEG SPECIAL MENU -->
-        <div class="menu-category">
-            <div class="category-title">Veg Special Menu</div>
-            <div class="card-grid">
-
-                <!-- Basic Thali -->
-                <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Veg Special Basic Thali" class="meal-img">
-                    <div class="meal-details">
-                        <div>
-                            <div class="meal-title">Basic Thali <span class="meal-price">₹100</span></div>
-                            <div class="meal-desc">Dal, Mix Veg, 2 Roti, Rice, Salad</div>
-                        </div>
-                        <button class="book-btn" onclick="openBooking('Veg Special Basic Thali', 100)">
-                            <i class="fab fa-whatsapp"></i> Book Meal
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Standard Thali -->
-                <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Veg Special Standard Thali" class="meal-img">
-                    <div class="meal-details">
-                        <div>
-                            <div class="meal-title">Standard Thali <span class="meal-price">₹130</span></div>
-                            <div class="meal-desc">Dal, Paneer Sabzi, Veg, 2 Roti, Rice, Salad, Pickle</div>
-                        </div>
-                        <button class="book-btn" onclick="openBooking('Veg Special Standard Thali', 130)">
-                            <i class="fab fa-whatsapp"></i> Book Meal
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Premium Thali -->
-                <div class="meal-card">
-                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Veg Special Premium Thali" class="meal-img">
-                    <div class="meal-details">
-                        <div>
-                            <div class="meal-title">Premium Thali <span class="meal-price">₹170</span></div>
-                            <div class="meal-desc">Dal Makhani, Paneer, Veg, 2 Roti, Rice, Salad, Sweet</div>
-                        </div>
-                        <button class="book-btn" onclick="openBooking('Veg Special Premium Thali', 170)">
-                            <i class="fab fa-whatsapp"></i> Book Meal
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
     </div>
 
     <!-- Booking Modal -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeBooking()">&times;</span>
+            <div class="order-id-badge" id="modalOrderId">Order ID: #RC-00000</div>
             <h3 id="modalMealName">Meal Name</h3>
             <p id="modalUnitPrice" style="margin-top: 0.3rem;">Price per meal: ₹0</p>
 
@@ -565,13 +463,13 @@
             <p style="font-size: 1.1rem; font-weight: bold; color: var(--brand-green);" id="modalTotalPrice">Total: ₹0</p>
 
             <a id="modalWaLink" href="#" target="_blank" class="book-btn" style="margin-top: 1.5rem; text-decoration: none;">
-                <i class="fab fa-whatsapp"></i> Confirm & Book on WhatsApp
+                <i class="fab fa-whatsapp"></i> Confirm & Send Order to Owner
             </a>
         </div>
     </div>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/917837501209?text=Hello!%20I%20want%20to%20order%20meals." target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/917837501209?text=Hello!%20I%20want%20to%20place%20an%20order." target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
         <span>Order on WhatsApp</span>
     </a>
@@ -588,12 +486,19 @@
         let currentMeal = '';
         let currentUnitPrice = 0;
         let qty = 1;
+        let currentOrderId = '';
+
+        function generateOrderId() {
+            return 'RC-' + Math.floor(10000 + Math.random() * 90000);
+        }
 
         function openBooking(mealName, unitPrice) {
             currentMeal = mealName;
             currentUnitPrice = unitPrice;
             qty = 1;
+            currentOrderId = generateOrderId();
 
+            document.getElementById('modalOrderId').innerText = "Order ID: #" + currentOrderId;
             document.getElementById('modalMealName').innerText = mealName;
             document.getElementById('modalUnitPrice').innerText = unitPrice > 0 ? "Price per meal: ₹" + unitPrice : "Custom Pricing";
             
@@ -613,8 +518,19 @@
             let total = currentUnitPrice * qty;
             document.getElementById('modalTotalPrice').innerText = currentUnitPrice > 0 ? "Total: ₹" + total : "";
 
-            let msg = encodeURIComponent("Hello! I would like to book:\n- Meal: " + currentMeal + "\n- Quantity: " + qty + "\n- Total Price: ₹" + total + "\n\nPlease share delivery details.");
-            document.getElementById('modalWaLink').href = "https://wa.me/917837501209?text=" + msg;
+            // Formatted message sent to WhatsApp
+            let textMessage = "🧾 *NEW MEAL ORDER - RAVE CEREMONY*\n" +
+                              "-----------------------------------\n" +
+                              "📌 *Order ID:* #" + currentOrderId + "\n" +
+                              "🍱 *Meal Item:* " + currentMeal + "\n" +
+                              "🔢 *Quantity:* " + qty + "\n" +
+                              "💰 *Total Amount:* ₹" + total + "\n" +
+                              "-----------------------------------\n" +
+                              "📍 *Delivery Address:* [Please type your address here]\n" +
+                              "📞 *Customer Contact:* [Please type your contact number]";
+
+            let encodedMessage = encodeURIComponent(textMessage);
+            document.getElementById('modalWaLink').href = "https://wa.me/917837501209?text=" + encodedMessage;
         }
 
         function closeBooking() {
