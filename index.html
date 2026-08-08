@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons for WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -22,6 +25,7 @@
             --btn-hover: #d08e6c;
             --white: #ffffff;
             --gold: #d4af37;
+            --whatsapp-green: #25D366;
         }
 
         * {
@@ -127,7 +131,7 @@
             background-color: var(--btn-hover);
         }
 
-        /* Value Badges Banner */
+        /* Trust Banner */
         .trust-banner {
             background-color: var(--bg-card);
             padding: 1.5rem 1rem;
@@ -171,7 +175,7 @@
             color: var(--text-muted);
         }
 
-        /* Segment Wise Meal Solutions Grid */
+        /* Segments Grid */
         .segments-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -228,7 +232,7 @@
             font-size: 1.05rem;
         }
 
-        /* Menu Collection Section */
+        /* Menu Collection */
         .menu-category {
             margin-bottom: 3.5rem;
         }
@@ -338,7 +342,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* How to order & footer banner */
+        /* How to order */
         .order-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -366,6 +370,38 @@
             margin: 0 auto 1rem;
         }
 
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            z-index: 2000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-float i {
+            font-size: 1.8rem;
+        }
+
+        .whatsapp-float span {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--brand-green);
@@ -387,22 +423,31 @@
             margin-bottom: 0.5rem;
         }
 
-        .contact-link {
-            display: inline-block;
+        .whatsapp-btn-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             margin-top: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: var(--white);
             text-decoration: none;
-            background: rgba(255,255,255,0.1);
+            background-color: var(--whatsapp-green);
             padding: 0.8rem 1.8rem;
-            border-radius: 4px;
+            border-radius: 30px;
+            transition: opacity 0.3s;
+        }
+
+        .whatsapp-btn-footer:hover {
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.1rem; }
             .section-header h2 { font-size: 1.8rem; }
             .menu-table th, .menu-table td { padding: 0.8rem; font-size: 0.9rem; }
+            .whatsapp-float span { display: none; }
+            .whatsapp-float { padding: 15px; border-radius: 50%; }
         }
     </style>
 </head>
@@ -417,10 +462,10 @@
                 <div class="brand-subtitle">PVT. LTD.</div>
             </div>
         </a>
-        <a href="#order" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order Now</a>
+        <a href="https://wa.me/917837501209?text=Hello!%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">Order on WhatsApp</a>
     </header>
 
-    <!-- Hero Section (Green Tomato Minimalist Style) -->
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Fresh Cooked Food, at Your Door</h1>
         <p>Premium food packaging & meal services for every occasion. Delicious, hygienic, and eco-friendly meal solutions delivered across your city.</p>
@@ -488,7 +533,7 @@
                     <div>
                         <h3>Online Delivery</h3>
                         <ul>
-                            <li>Order via Phone / App</li>
+                            <li>Order via WhatsApp / App</li>
                             <li>Safe & Leak Proof Packaging</li>
                             <li>On Time Delivery</li>
                             <li>Track Your Order Live</li>
@@ -647,13 +692,13 @@
             <div class="order-steps">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h4>Choose Your Plan</h4>
+                    <h4>Choose Your Meal</h4>
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Select from North, South Indian, or Special Veg Thalis.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h4>Place Your Order</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Call or message us with your selection and location.</p>
+                    <h4>Order via WhatsApp</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Click the WhatsApp button to send your selection and address.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
@@ -665,14 +710,24 @@
 
     </div>
 
+    <!-- Floating WhatsApp Button (Bottom Right) -->
+    <a href="https://wa.me/917837501209?text=Hello!%20I%20would%20like%20to%20place%20an%20order%20/%20inquire%20about%20meal%20plans." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span>Order on WhatsApp</span>
+    </a>
+
     <!-- Footer -->
     <footer>
         <h3>RAVE CEREMONY PVT. LTD.</h3>
         <p>Good Food, Great Moments</p>
         <p style="margin-top: 1rem;"><strong>Serving In:</strong> Chandigarh | Mohali | Panchkula | Zirakpur | Derabassi</p>
-        <a href="tel:+917837501209" class="contact-link">📞 Order Now: +91 78375 01209</a>
+        <br>
+        <a href="https://wa.me/917837501209?text=Hello!%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="whatsapp-btn-footer">
+            <i class="fab fa-whatsapp"></i> Order via WhatsApp (+91 78375 01209)
+        </a>
         <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Rave Ceremony Pvt. Ltd. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
+
